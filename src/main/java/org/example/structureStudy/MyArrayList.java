@@ -94,12 +94,16 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public E get(int index) {
-        return null;
+        if (index < 0 || index >= size)
+            throw new IndexOutOfBoundsException("인덱스의 크기가 리스트 사이즈 보다 크거나, 0보다 작습니다.");
+        return array[index];
     }
 
     @Override
     public E set(int index, E element) {
-        return null;
+        E old = get(index);
+        array[index] = element;
+        return old;
     }
 
     @Override
