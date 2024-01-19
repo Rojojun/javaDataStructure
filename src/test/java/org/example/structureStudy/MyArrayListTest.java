@@ -1,8 +1,15 @@
 package org.example.structureStudy;
 
 import org.junit.Before;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+import static org.hamcrest.CoreMatchers.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,7 +50,7 @@ public class MyArrayListTest {
             mylist.add(i);
         }
         //System.out.println(Arrays.toString(mal.toArray()));
-        assertThat(mylist.get(18), is(new Integer(19)));
+        assertThat(mylist.get(18), is(Integer.valueOf(19)));
     }
 
     /**
@@ -53,7 +60,7 @@ public class MyArrayListTest {
     public void testAddIntT() {
         mylist.add(1, 5);
         //System.out.println(Arrays.toString(mal.toArray()));
-        assertThat(mylist.get(1), is(new Integer(5)));
+        assertThat(mylist.get(1), is(Integer.valueOf(5)));
         assertThat(mylist.size(), is(4));
 
         try {
@@ -72,7 +79,7 @@ public class MyArrayListTest {
 
         mylist.add(5, 7);
         //System.out.println(Arrays.toString(mal.toArray()));
-        assertThat(mylist.get(5), is(new Integer(7)));
+        assertThat(mylist.get(5), is(Integer.valueOf(7)));
     }
 
     /**
@@ -84,7 +91,7 @@ public class MyArrayListTest {
         mylist.addAll(list);
         mylist.addAll(list);
         assertThat(mylist.size(), is(12));
-        assertThat(mylist.get(5), is(new Integer(3)));
+        assertThat(mylist.get(5), is(Integer.valueOf(3)));
     }
 
     /**
@@ -121,7 +128,7 @@ public class MyArrayListTest {
      */
     @Test
     public void testGet() {
-        assertThat(mylist.get(1), is(new Integer(2)));
+        assertThat(mylist.get(1), is(Integer.valueOf(2)));
     }
 
     /**
@@ -161,9 +168,9 @@ public class MyArrayListTest {
     @Test
     public void testIterator() {
         Iterator<Integer> iter = mylist.iterator();
-        assertThat(iter.next(), is(new Integer(1)));
-        assertThat(iter.next(), is(new Integer(2)));
-        assertThat(iter.next(), is(new Integer(3)));
+        assertThat(iter.next(), is(Integer.valueOf(1)));
+        assertThat(iter.next(), is(Integer.valueOf(2)));
+        assertThat(iter.next(), is(Integer.valueOf(3)));
         assertThat(iter.hasNext(), equalTo(false));
     }
 
@@ -173,7 +180,7 @@ public class MyArrayListTest {
     @Test
     public void testLastIndexOf() {
         mylist.add(2);
-        assertThat(mylist.lastIndexOf(new Integer(2)), is(3));
+        assertThat(mylist.lastIndexOf(Integer.valueOf(2)), is(3));
     }
 
     /**
@@ -181,25 +188,25 @@ public class MyArrayListTest {
      */
     @Test
     public void testRemoveObject() {
-        boolean flag = mylist.remove(new Integer(2));
+        boolean flag = mylist.remove(Integer.valueOf(2));
         assertThat(flag, equalTo(true));
         assertThat(mylist.size(), is(2));
-        assertThat(mylist.get(1), is(new Integer(3)));
+        assertThat(mylist.get(1), is(Integer.valueOf(3)));
         //System.out.println(Arrays.toString(mal.toArray()));
 
-        flag = mylist.remove(new Integer(1));
+        flag = mylist.remove(Integer.valueOf(1));
         assertThat(flag, equalTo(true));
         assertThat(mylist.size(), is(1));
-        assertThat(mylist.get(0), is(new Integer(3)));
+        assertThat(mylist.get(0), is(Integer.valueOf(3)));
         //System.out.println(Arrays.toString(mal.toArray()));
 
-        flag = mylist.remove(new Integer(5));
+        flag = mylist.remove(Integer.valueOf(5));
         assertThat(flag, equalTo(false));
         assertThat(mylist.size(), is(1));
-        assertThat(mylist.get(0), is(new Integer(3)));
+        assertThat(mylist.get(0), is(Integer.valueOf(3)));
         //System.out.println(Arrays.toString(mal.toArray()));
 
-        flag = mylist.remove(new Integer(3));
+        flag = mylist.remove(Integer.valueOf(3));
         assertThat(flag, equalTo(true));
         assertThat(mylist.size(), is(0));
         //System.out.println(Arrays.toString(mal.toArray()));
@@ -211,9 +218,9 @@ public class MyArrayListTest {
     @Test
     public void testRemoveInt() {
         Integer val = mylist.remove(1);
-        assertThat(val, is(new Integer(2)));
+        assertThat(val, is(Integer.valueOf(2)));
         assertThat(mylist.size(), is(2));
-        assertThat(mylist.get(1), is(new Integer(3)));
+        assertThat(mylist.get(1), is(Integer.valueOf(3)));
     }
 
     /**
@@ -231,19 +238,19 @@ public class MyArrayListTest {
     @Test
     public void testSet() {
         Integer val = mylist.set(1, 5);
-        assertThat(val, is(new Integer(2)));
+        assertThat(val, is(Integer.valueOf(2)));
 
         val = mylist.set(0, 6);
-        assertThat(val, is(new Integer(1)));
+        assertThat(val, is(Integer.valueOf(1)));
 
         val = mylist.set(2, 7);
-        assertThat(val, is(new Integer(3)));
+        assertThat(val, is(Integer.valueOf(3)));
 
         // return value should be 2
         // list should be [6, 5, 7]
-        assertThat(mylist.get(0), is(new Integer(6)));
-        assertThat(mylist.get(1), is(new Integer(5)));
-        assertThat(mylist.get(2), is(new Integer(7)));
+        assertThat(mylist.get(0), is(Integer.valueOf(6)));
+        assertThat(mylist.get(1), is(Integer.valueOf(5)));
+        assertThat(mylist.get(2), is(Integer.valueOf(7)));
         //System.out.println(Arrays.toString(mal.toArray()));
 
         try {
@@ -272,7 +279,7 @@ public class MyArrayListTest {
     public void testSubList() {
         mylist.addAll(list);
         List<Integer> sub = mylist.subList(1, 4);
-        assertThat(sub.get(1), is(new Integer(3)));
+        assertThat(sub.get(1), is(Integer.valueOf(3)));
     }
 
     /**
@@ -281,6 +288,6 @@ public class MyArrayListTest {
     @Test
     public void testToArray() {
         Object[] array = mylist.toArray();
-        assertThat((Integer)array[0], is(new Integer(1)));
+        assertThat((Integer)array[0], is(Integer.valueOf(1)));
     }
 }
