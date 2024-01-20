@@ -1,35 +1,37 @@
 package org.example.structureStudy;
 
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+class MyArrayListTest {
 
-public class MyArrayListTest {
-
-    protected List<Integer> mylist;
-    protected List<Integer> list;
+    protected static List<Integer> mylist;
+    protected static List<Integer> list;
 
 
     /**
      * @throws java.lang.Exception
      */
-    @Before
-    public void setUp() throws Exception {
-        list = new ArrayList<Integer>();
+    @BeforeAll
+    public static void setUp() throws Exception {
+        list = new ArrayList<>();
         list.add(1);
         list.add(2);
         list.add(3);
 
-        mylist = new MyArrayList<Integer>();
+        mylist = new MyArrayList<>();
         mylist.addAll(list);
     }
 
@@ -38,7 +40,7 @@ public class MyArrayListTest {
      */
     @Test
     public void testMyList() {
-        assertThat(mylist.size(), is(3));
+        Assert.assertEquals(3, list.size());
     }
 
     /**
@@ -136,10 +138,10 @@ public class MyArrayListTest {
      */
     @Test
     public void testIndexOf() {
-        assertThat(mylist.indexOf(1), is(0));
-        assertThat(mylist.indexOf(2), is(1));
-        assertThat(mylist.indexOf(3), is(2));
-        assertThat(mylist.indexOf(4), is(-1));
+        assertEquals(0, mylist.indexOf(1));
+        assertEquals(1, mylist.indexOf(2));
+        assertEquals(2, mylist.indexOf(3));
+        assertEquals(-1, mylist.indexOf(4));
     }
 
     /**
