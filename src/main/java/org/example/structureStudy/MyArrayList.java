@@ -112,7 +112,9 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
+        if (array[index] != null) {
 
+        }
     }
 
     @Override
