@@ -69,7 +69,11 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+        boolean flag = true;
+        for (E element : c) {
+            flag &= add(element);
+        }
+        return flag;
     }
 
     @Override
@@ -118,7 +122,12 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        for (int i = 0; i<size; i++) {
+            if (o == array[i]) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override

@@ -1,8 +1,6 @@
 package org.example.structureStudy;
 
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +31,7 @@ class MyArrayListTest {
 
         mylist = new MyArrayList<>();
         mylist.addAll(list);
+        System.out.println("mylist.size() = " + mylist.size());
     }
 
     /**
@@ -138,6 +137,8 @@ class MyArrayListTest {
      */
     @Test
     public void testIndexOf() {
+        System.out.println(mylist.size());
+
         assertEquals(0, mylist.indexOf(1));
         assertEquals(1, mylist.indexOf(2));
         assertEquals(2, mylist.indexOf(3));
