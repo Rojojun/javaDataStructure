@@ -112,14 +112,24 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-        if (array[index] != null) {
-
+        if (index < 0 || index >  size) {
+            throw new IndexOutOfBoundsException();
         }
+        add(element);
+        for (int i = size - 1; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = element;
     }
 
     @Override
     public E remove(int index) {
-        return null;
+        E element = get(index);
+        for (int i = index; i < size - 1; i++ ) {
+            array[i] = array[i + 1];
+        }
+        size--;
+        return element;
     }
 
     @Override
