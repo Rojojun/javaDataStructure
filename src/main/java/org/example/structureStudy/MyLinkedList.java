@@ -135,18 +135,13 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public int indexOf(Object target) {
-        Node current = head;
+        Node current = this.head.next;
         int index = 0;
 
-        while(current != null) {
-            if (target == null) {
-                if (current.data == null) {
-                    return index;
-                }
-            } else if (target.equals(current.data)) {
+        while (current != null) {
+            if (target.equals(current.data)) {
                 return index;
             }
-
             current = current.next;
             index++;
         }
