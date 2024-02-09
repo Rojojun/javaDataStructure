@@ -135,7 +135,22 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public int indexOf(Object target) {
-        //TODO: FILL THIS IN!
+        Node current = head;
+        int index = 0;
+
+        while(current != null) {
+            if (target == null) {
+                if (current.data == null) {
+                    return index;
+                }
+            } else if (target.equals(current.data)) {
+                return index;
+            }
+
+            current = current.next;
+            index++;
+        }
+
         return -1;
     }
 
